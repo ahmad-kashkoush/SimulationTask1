@@ -1,5 +1,6 @@
-#include<bits/stdc++.h>
-using namespace std;
+
+#include "Date.h"
+
 double Principal, AnnualRate, MonthlyRate;
 /*
  240000
@@ -8,6 +9,7 @@ double Principal, AnnualRate, MonthlyRate;
  */
 double Term;// number of years
 double NumberOfPayment;
+Date d;
 double Pow(double a, double b){
     double k=1;
     while(b--){
@@ -22,6 +24,7 @@ void TakeInput(){
     cin>>AnnualRate;
 //    cout<<"Enter on How many Years: ";
     cin>>Term;
+    d.Enter();
 }
 void DoProcess(){
     NumberOfPayment=Term*12;
@@ -36,13 +39,15 @@ void PrintOutput(){
             // interest, principal
             double Interest=BeginningBalance*MonthlyRate;
             double MonthlyPrincipal=M-Interest;
-            cout<<Month<<"\t\t"<<BeginningBalance<<"\t\t\t\t"<<M<<"\t\t"<<Interest<<"\t\t"<<MonthlyPrincipal<<"\t";
-//            cout<<Beginning
+            cout<<Month<<"\t ";
+            d.Print();
+            cout<<"\t"<<BeginningBalance<<"\t\t\t "<<M<<"\t"<<Interest<<"\t\t"<<MonthlyPrincipal<<"\t";
              if(BeginningBalance<M){
                  cout<<0;
                  BeginningBalance=0;
                  continue;
              }
+             d.next();
               BeginningBalance=BeginningBalance-MonthlyPrincipal;
              // Now Beginning =Endiing
              cout<<BeginningBalance<<"\n";
